@@ -1,7 +1,9 @@
 import json
-from pprint import pprint
 from xml.etree import ElementTree as ET
 
+from airflow.decorators import dag, task
+
+@task()
 def flatten_nutrition_data(nutrition_data_path: str):
     tree = ET.parse(nutrition_data_path)
     root = tree.getroot()
@@ -38,6 +40,7 @@ def flatten_nutrition_data(nutrition_data_path: str):
 
     return result
 
+@task()
 def flatten_pets_data(pets_data_path: str):
     with open(pets_data_path, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -59,6 +62,14 @@ def flatten_pets_data(pets_data_path: str):
 
     return result
 
-if __name__ == "__main__":
-    pprint(flatten_pets_data("pets-data.json"))
-    pprint(flatten_nutrition_data("nutrition.xml"))
+@dag(
+    dag_id="task_02",
+    default_args={
+        "owner": "Kirill Sidorov"
+    },
+    schedule=None
+)
+def main():
+    flatten_nutrition_data("/opt/airflow/datasets/nutrition.xml") >> flatten_pets_data("/opt/airflow/datasets/pets-data.json")
+
+main()
