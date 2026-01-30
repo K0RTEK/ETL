@@ -1,15 +1,13 @@
-from datetime import datetime
-
 from airflow.decorators import dag, task
 import pandas as pd
 import logging
 
 
 @task()
-def df_transform():
+def df_transform(iot_path: str):
     logger = logging.getLogger("airflow.task")
 
-    df = pd.read_csv("/opt/airflow/datasets/IOT-temp.csv")
+    df = pd.read_csv(iot_path)
 
     df_in = df[df['out/in'] == 'In'].copy()
 
@@ -22,7 +20,7 @@ def df_transform():
     upper_bound = daily_temp['avg_temp'].quantile(0.95)
     daily_temp_cleaned = daily_temp[
         (daily_temp['avg_temp'] >= lower_bound) & (daily_temp['avg_temp'] <= upper_bound)
-    ]
+        ]
 
     hottest_days = daily_temp_cleaned.nlargest(5, 'avg_temp')
     coldest_days = daily_temp_cleaned.nsmallest(5, 'avg_temp')
@@ -42,15 +40,14 @@ def df_transform():
 
 
 @dag(
-    dag_id="task_1",
-    default_args={"owner": "Kirill"},
-    schedule_interval=None,
-    start_date=datetime(2026, 1, 23),
+    dag_id="task_03",
+    default_args={
+        "owner": "Kirill Sidorov"
+    },
+    schedule=None
 )
 def main():
-    task1 = df_transform()
-
-    task1
+    df_transform("/opt/airflow/datasets/IOT-temp.csv")
 
 
 main()
