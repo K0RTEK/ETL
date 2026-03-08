@@ -1,0 +1,61 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "ticket_id",
+      "user_id",
+      "status",
+      "issue_type",
+      "messages",
+      "created_at",
+      "updated_at"
+    ],
+    "properties": {
+      "ticket_id": {
+        "bsonType": "string",
+        "description": "Уникальный идентификатор тикета"
+      },
+      "user_id": {
+        "bsonType": "string",
+        "description": "Идентификатор пользователя"
+      },
+      "status": {
+        "enum": ["open", "in_progress", "closed"],
+        "description": "Статус тикета"
+      },
+      "issue_type": {
+        "bsonType": "string",
+        "description": "Тип проблемы"
+      },
+      "messages": {
+        "bsonType": "array",
+        "description": "Массив сообщений",
+        "items": {
+          "bsonType": "object",
+          "required": ["sender", "message", "timestamp"],
+          "properties": {
+            "sender": {
+              "enum": ["user", "support"]
+            },
+            "message": {
+              "bsonType": "string"
+            },
+            "timestamp": {
+              "bsonType": "date"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "created_at": {
+        "bsonType": "date",
+        "description": "Время создания тикета"
+      },
+      "updated_at": {
+        "bsonType": "date",
+        "description": "Время последнего обновления"
+      }
+    },
+    "additionalProperties": false
+  }
+}

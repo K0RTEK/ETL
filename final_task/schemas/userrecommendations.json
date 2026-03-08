@@ -1,0 +1,28 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "user_id",
+      "recommended_products",
+      "last_updated"
+    ],
+    "properties": {
+      "user_id": {
+        "bsonType": "string",
+        "description": "Идентификатор пользователя"
+      },
+      "recommended_products": {
+        "bsonType": "array",
+        "description": "Массив рекомендованных товаров",
+        "items": {
+          "bsonType": "string"
+        }
+      },
+      "last_updated": {
+        "bsonType": "date",
+        "description": "Время последнего обновления рекомендаций"
+      }
+    },
+    "additionalProperties": false
+  }
+}

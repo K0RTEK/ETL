@@ -1,0 +1,55 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "review_id",
+      "user_id",
+      "product_id",
+      "review_text",
+      "rating",
+      "moderation_status",
+      "flags",
+      "submitted_at"
+    ],
+    "properties": {
+      "review_id": {
+        "bsonType": "string",
+        "description": "Идентификатор отзыва"
+      },
+      "user_id": {
+        "bsonType": "string",
+        "description": "Идентификатор пользователя"
+      },
+      "product_id": {
+        "bsonType": "string",
+        "description": "Идентификатор товара"
+      },
+      "review_text": {
+        "bsonType": "string",
+        "description": "Текст отзыва"
+      },
+      "rating": {
+        "bsonType": "int",
+        "minimum": 1,
+        "maximum": 5,
+        "description": "Оценка от 1 до 5"
+      },
+      "moderation_status": {
+        "enum": ["pending", "approved", "rejected"],
+        "description": "Статус модерации"
+      },
+      "flags": {
+        "bsonType": "array",
+        "description": "Массив флагов",
+        "items": {
+          "bsonType": "string"
+        }
+      },
+      "submitted_at": {
+        "bsonType": "date",
+        "description": "Время отправки отзыва"
+      }
+    },
+    "additionalProperties": false
+  }
+}

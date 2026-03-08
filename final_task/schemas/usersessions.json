@@ -1,0 +1,64 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "session_id",
+      "user_id",
+      "start_time",
+      "end_time",
+      "pages_visited",
+      "device",
+      "actions"
+    ],
+    "properties": {
+      "session_id": {
+        "bsonType": "string",
+        "description": "Уникальный идентификатор сессии"
+      },
+      "user_id": {
+        "bsonType": "string",
+        "description": "Идентификатор пользователя"
+      },
+      "start_time": {
+        "bsonType": "date",
+        "description": "Время начала сессии"
+      },
+      "end_time": {
+        "bsonType": "date",
+        "description": "Время завершения сессии"
+      },
+      "pages_visited": {
+        "bsonType": "array",
+        "description": "Массив посещённых страниц",
+        "items": {
+          "bsonType": "string"
+        }
+      },
+      "device": {
+        "bsonType": "object",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "enum": ["mobile", "desktop", "tablet"],
+            "description": "Тип устройства"
+          },
+          "os": {
+            "bsonType": "string"
+          },
+          "browser": {
+            "bsonType": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "actions": {
+        "bsonType": "array",
+        "description": "Массив действий пользователя",
+        "items": {
+          "bsonType": "string"
+        }
+      }
+    },
+    "additionalProperties": false
+  }
+}
