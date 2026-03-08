@@ -23,9 +23,6 @@ def run_seed_mongo():
 
     batch_size = 1000
 
-    # =========================
-    # LOOKUPS
-    # =========================
     pages = [
         "/home",
         "/catalog",
@@ -97,9 +94,6 @@ def run_seed_mongo():
         "Средний вариант за свои деньги.",
     ]
 
-    # =========================
-    # HELPERS
-    # =========================
     def random_datetime(start_days_ago=90, end_days_ago=0):
         now = datetime.now(timezone.utc)
         start = now - timedelta(days=start_days_ago)
@@ -153,9 +147,6 @@ def run_seed_mongo():
                 total += len(batch)
         return total
 
-    # =========================
-    # GENERATORS
-    # =========================
     def generate_user_sessions(n):
         docs = []
         for i in range(1, n + 1):
@@ -281,9 +272,6 @@ def run_seed_mongo():
             })
         return docs
 
-    # =========================
-    # MONGO WRITE
-    # =========================
     client = MongoClient(mongo_uri)
     db = client[mongo_db_name]
 
@@ -299,13 +287,11 @@ def run_seed_mongo():
         for collection_name, docs in datasets.items():
             collection = db[collection_name]
 
-            # full refresh коллекции
             collection.delete_many({})
 
             inserted = insert_in_batches(collection, docs, batch_size)
             print(f"[{collection_name}] inserted {inserted} documents")
 
-        # индексы
         db["UserSessions"].create_index("session_id", unique=True)
         db["EventLogs"].create_index("event_id", unique=True)
         db["SupportTickets"].create_index("ticket_id", unique=True)
