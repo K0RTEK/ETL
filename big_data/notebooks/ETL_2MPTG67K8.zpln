@@ -1,0 +1,220 @@
+﻿{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "https://ui-c9qkaqamjl81sgdag3lq-rc1b-dataproc-c-tplimdhcmb54rpf0-46379.dataproc-ui.yandexcloud.net/jobs/job?id=2",
+              "$$hashKey": "object:992"
+            },
+            {
+              "jobUrl": "https://ui-c9qkaqamjl81sgdag3lq-rc1b-dataproc-c-tplimdhcmb54rpf0-46379.dataproc-ui.yandexcloud.net/jobs/job?id=3",
+              "$$hashKey": "object:993"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1777369716582_285974989",
+      "id": "paragraph_1777369716582_285974989",
+      "dateCreated": "2026-04-28T09:48:36+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:614",
+      "text": "%spark.pyspark from pyspark.sql import functions as F\n\ndf = spark.read.csv(\"s3a://apache/ETL/\", header=True)\n\ndf.show(10)",
+      "dateUpdated": "2026-04-28T09:54:51+0000",
+      "dateFinished": "2026-04-28T09:54:52+0000",
+      "dateStarted": "2026-04-28T09:54:51+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----+-----------+--------------------+-----+--------------+--------------+-----------------------+-------+----------+----------+\n|rank|    country|              region|score|gdp_per_capita|social_support|healthy_life_expectancy|freedom|generosity|corruption|\n+----+-----------+--------------------+-----+--------------+--------------+-----------------------+-------+----------+----------+\n|   1|    Finland|      Western Europe|7.764|         1.892|         1.581|                  0.952|  0.670|     0.186|     0.498|\n|   2|    Iceland|      Western Europe|7.701|         1.874|         1.611|                  0.959|  0.662|     0.269|     0.512|\n|   3|    Denmark|      Western Europe|7.688|         1.887|         1.562|                  0.948|  0.665|     0.211|     0.495|\n|   4| Costa Rica|Latin America and...|7.439|         1.254|         1.421|                  0.891|  0.631|     0.178|     0.312|\n|   5|     Sweden|      Western Europe|7.401|         1.878|         1.501|                  0.952|  0.658|     0.224|     0.481|\n|   6|     Norway|      Western Europe|7.392|         1.959|         1.553|                  0.952|  0.661|     0.210|     0.491|\n|   7|Netherlands|      Western Europe|7.319|         1.877|         1.488|                  0.942|  0.642|     0.267|     0.411|\n|   8|     Israel|Middle East and N...|7.234|         1.803|         1.521|                  0.905|  0.599|     0.144|     0.311|\n|   9| Luxembourg|      Western Europe|7.228|         2.096|         1.502|                  0.940|  0.649|     0.181|     0.432|\n|  10|Switzerland|      Western Europe|7.201|         1.993|         1.551|                  0.961|  0.647|     0.271|     0.430|\n+----+-----------+--------------------+-----+--------------+--------------+-----------------------+-------+----------+----------+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%spark.pyspark\n\ndf = df.filter(F.col(\"region\") == \"Western Europe\")\n\ndf.show(10)",
+      "user": "anonymous",
+      "dateUpdated": "2026-04-28T09:57:33+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "https://ui-c9qkaqamjl81sgdag3lq-rc1b-dataproc-c-tplimdhcmb54rpf0-46379.dataproc-ui.yandexcloud.net/jobs/job?id=6",
+              "$$hashKey": "object:1175"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1777369808454_1022187428",
+      "id": "paragraph_1777369808454_1022187428",
+      "dateCreated": "2026-04-28T09:50:08+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:697",
+      "dateFinished": "2026-04-28T09:57:34+0000",
+      "dateStarted": "2026-04-28T09:57:33+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----+-----------+--------------+-----+--------------+--------------+-----------------------+-------+----------+----------+\n|rank|    country|        region|score|gdp_per_capita|social_support|healthy_life_expectancy|freedom|generosity|corruption|\n+----+-----------+--------------+-----+--------------+--------------+-----------------------+-------+----------+----------+\n|   1|    Finland|Western Europe|7.764|         1.892|         1.581|                  0.952|  0.670|     0.186|     0.498|\n|   2|    Iceland|Western Europe|7.701|         1.874|         1.611|                  0.959|  0.662|     0.269|     0.512|\n|   3|    Denmark|Western Europe|7.688|         1.887|         1.562|                  0.948|  0.665|     0.211|     0.495|\n|   5|     Sweden|Western Europe|7.401|         1.878|         1.501|                  0.952|  0.658|     0.224|     0.481|\n|   6|     Norway|Western Europe|7.392|         1.959|         1.553|                  0.952|  0.661|     0.210|     0.491|\n|   7|Netherlands|Western Europe|7.319|         1.877|         1.488|                  0.942|  0.642|     0.267|     0.411|\n|   9| Luxembourg|Western Europe|7.228|         2.096|         1.502|                  0.940|  0.649|     0.181|     0.432|\n|  10|Switzerland|Western Europe|7.201|         1.993|         1.551|                  0.961|  0.647|     0.271|     0.430|\n|  14|    Germany|Western Europe|6.941|         1.876|         1.461|                  0.943|  0.621|     0.181|     0.381|\n|  17|    Austria|Western Europe|6.905|         1.881|         1.471|                  0.946|  0.621|     0.181|     0.361|\n+----+-----------+--------------+-----+--------------+--------------+-----------------------+-------+----------+----------+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%spark.pyspark\n\ndf.write \\\n    .mode(\"overwrite\") \\\n    .parquet(\"s3a://apache/ETL/world_happiness_transformed/\")",
+      "user": "anonymous",
+      "dateUpdated": "2026-04-28T09:58:16+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "https://ui-c9qkaqamjl81sgdag3lq-rc1b-dataproc-c-tplimdhcmb54rpf0-46379.dataproc-ui.yandexcloud.net/jobs/job?id=7",
+              "$$hashKey": "object:1264"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1777370130442_896456484",
+      "id": "paragraph_1777370130442_896456484",
+      "dateCreated": "2026-04-28T09:55:30+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:1002",
+      "dateFinished": "2026-04-28T09:58:21+0000",
+      "dateStarted": "2026-04-28T09:58:16+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      }
+    },
+    {
+      "text": "%spark.pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2026-04-28T09:58:16+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1777370296088_1937005063",
+      "id": "paragraph_1777370296088_1937005063",
+      "dateCreated": "2026-04-28T09:58:16+0000",
+      "status": "READY",
+      "focus": true,
+      "$$hashKey": "object:1180"
+    }
+  ],
+  "name": "ETL",
+  "id": "2MPTG67K8",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/ETL"
+}
